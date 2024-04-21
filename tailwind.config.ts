@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+// const plugin = require('tailwindcss/plugin')
+import plugin from "tailwindcss/plugin"
 
 const config: Config = {
   content: [
@@ -13,8 +15,24 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        'secondary':'#777E90',
+        'secondarySoft':'#B1B5C3',
+        'bg': '#ffffff',
+        'bgSoft': '#F7F7F7',
+        
+      },
     },
   },
-  plugins: [],
+
+  plugins: [
+    // plugin(function ({addUtilities}) {
+    //   addUtilities({
+    //     '.card-shadow': {
+    //       'box-shadow': 'auto',
+    //     }
+    //   })
+    // })
+  ]
 };
 export default config;
