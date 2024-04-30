@@ -35,7 +35,7 @@ export const CardListSmall  = ({items}:props) => {
 
 export const CardListBig = ({items}:props) => {
     return (
-        <div className="bg-bg grid grid-cols-2 gap-10 rounded-lg p-7 card-shadow h-[800px] ">
+        <div className="bg-bg grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 rounded-lg p-4 lg:p-7 card-shadow min-h-[800px] ">
             {items.map(c => (
                 <CardBig
                     isSmall
