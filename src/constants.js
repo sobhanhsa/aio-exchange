@@ -1,3 +1,16 @@
+const desitedCoins = [
+    "BTC",
+    "ETH",
+    "USDT",
+    "BNB",
+    "XRP",
+    "SOL",
+    "ADA",
+    "DOGE",
+    "AVAX",
+
+];
+
 const coins = [
     {
         cap:"500,000,000,000",
