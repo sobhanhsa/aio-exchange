@@ -52,7 +52,7 @@ export const CardSmall = (props:cardProps) => {
 
 export const CardBig = (props:cardProps) => {
     return (
-        <div className="flex bg-bgSoft rounded-lg p-8   ">
+        <div className="flex bg-bgSoft rounded-lg p-4 sm:p-8   ">
             {/* info container */}
             <div className=" flex flex-col sm:justify-between flex-1">
                 {/* logo container */}
