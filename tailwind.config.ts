@@ -20,6 +20,7 @@ const config: Config = {
         'secondarySoft':'#B1B5C3',
         'bg': '#ffffff',
         'bgSoft': '#F7F7F7',
+        'primary':'#3772FF'
         
       },
     },
