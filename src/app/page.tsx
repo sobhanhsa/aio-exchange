@@ -1,20 +1,51 @@
 import { CardListBig , CardListSmall } from "@/components/cardListSmall/Cardlist";
 import { TableCard } from "@/components/tableCard/TableCard";
-import coins from "@/constants"
+// import coins from "@/constants"
 
-const HomePage  = () => {
+const fetcher = async(url:string) => {
+    try{
+
+        const res = await fetch(url);
+    
+        const body = await res.json();
+        if (!res.ok) {
+            throw new Error(body.message);
+        }
+        return body;
+    } catch(error:any) {
+        console.log("error in home page fetcher : ",error.message);
+    }
+}
+
+const HomePage  = async() => {
+
+    const data = await 
+        fetcher(process.env.NEXT_PUBLIC_API_URL+"/currency/?from=1&to=7");
+    
+    if (!data) throw "server error"
+
+    const coins : any[] = data?.currencies;
+    
+    console.log("coins : ",coins);
+
     return (
         <div className="flex items-center flex-col [direction:rtl] w-full">
             {/* top add */}
-            <div className="w-full h-[500px] bg-secondary">
-
+            <div className="w-full h-[500px] bg-secondary relative">
+                <p className=" absolute top-1/2 left-1/2 text-9xl">
+                    ADD
+                </p>
+                <p className=" absolute top-1/2 left-1/3 text-9xl text-white">
+                    ADD
+                </p>
+                
             </div>
             {/* main content */}
             <div className=" flex flex-col p-1 md:px-12 lg:px-28 w-full relative">
                 {/* top currency list */}
-                <CardListSmall items={coins} />
+                <CardListSmall  />
                 {/* quad list */}
-                <CardListBig   items={coins}/>
+                <CardListBig   items={coins.slice(0,4)}/>
                 {/* latest */}
                 <div className="flex text-base flex-col mt-24">
                     {/* title (head) */}
@@ -62,13 +93,14 @@ const HomePage  = () => {
                         </thead>
                         <tbody>
                             {/* rows */}
-                            {coins.map(c => (
+                            {coins?.map((c:any) => (
                                 <TableCard 
-                                    name={c.name}
+                                    symbol={c.symbol}
+                                    name={c.name.fa}
                                     price={c.price}
-                                    change={c.change}
+                                    change={c.percentChangeDay}
                                     cap={c.cap}
-                                    weekChange={c.weekChagne} 
+                                    weekChange={c.changeWeek} 
                                 />
                             ))}
                         </tbody>

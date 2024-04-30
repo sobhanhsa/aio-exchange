@@ -11,16 +11,17 @@ type cardProps = {
 };
 
 export const CardSmall = (props:cardProps) => {
+    console.log("change : ",Number(props.change));
     return (
         <div className="flex bg-bgSoft rounded-lg p-6 w-1/4">
             {/* info container */}
             <div className=" flex flex-col sm:gap-5 flex-1">
                 {/* logo container */}
-                <div className="relative w-10 h-10 bg-yellow-500">
-                    {/* <Image className=" object-cover" src={props.img} alt="" fill/> */}
+                <div className="relative w-10 h-10" >
+                    <Image className="object-cover" src={props.img.toLowerCase()} alt="" fill/>
                 </div>
                 {/* name */}
-                <p className="text-sm font-bold">
+                <p className="text-sm font-bold text-nowrap">
                     {props.name}
                 </p>
                 {/* abbreviation */}
@@ -37,8 +38,8 @@ export const CardSmall = (props:cardProps) => {
                 </div>
                 {/* change */}
                 <p className="text-base text-white [direction:ltr]">
-                    <span className="bg-green-700 p-2 py-1 rounded">
-                        {props.change}
+                    <span className={`${Number(props.change) > 0 ?  "bg-green-700" : "bg-red-700"} p-2 py-1 rounded`}>
+                        {props.change.slice(0,5)}%
                     </span>
                 </p>
                 {/* price */}
@@ -56,8 +57,8 @@ export const CardBig = (props:cardProps) => {
             {/* info container */}
             <div className=" flex flex-col sm:justify-between flex-1">
                 {/* logo container */}
-                <div className="relative w-20 h-20 bg-yellow-500">
-                    {/* <Image className=" object-cover" src={props.img} alt="" fill/> */}
+                <div className="relative w-20 h-20">
+                    <Image className=" object-cover" src={props.img} alt="" fill/>
                 </div>
                 {/* name */}
                 <p className="text-xl   font-bold">
@@ -77,7 +78,10 @@ export const CardBig = (props:cardProps) => {
                 </div>
                 {/* change */}
                 <p className="text-base text-white [direction:ltr]">
-                    <span className="bg-green-700 p-8 py-1 rounded-3xl ">
+                    <span className={
+                        `${Number(props.change) > 0 ?  "bg-green-700" : "bg-red-700"}
+                        p-8 py-1 rounded-3xl `}
+                    >
                         {props.change}
                     </span>
                 </p>

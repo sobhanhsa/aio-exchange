@@ -6,6 +6,7 @@ type propsType = {
     change:string
     cap:string    
     weekChange:string
+    symbol:string
 }
 
 export const TableCard  = (props:propsType) => {
@@ -28,13 +29,13 @@ export const TableCard  = (props:propsType) => {
                 </span>
                 {/* symbol */}
                 <span className=" text-secondary m-auto ">
-                    BTC
+                    {props.symbol}
                 </span>
             </td>
             <td className=" p-4 py-7 ">
                 {props.price}
             </td>
-            <td className=" p-4 py-7 text-red-600">
+            <td dir="ltr" className=" p-4 py-7 text-red-600 flex justify-end">
                 {props.change}
             </td>
             <td className="invisible sm:visible p-4 py-7 ">
